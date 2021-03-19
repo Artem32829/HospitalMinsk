@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HospitalRBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="RegistrationPatient">
+    <Key>
+      <PropertyRef Name="Id_patient" />
+    </Key>
+    <Property Name="Id_patient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name_patient" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+    <Property Name="birthday" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="adress_patient" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+    <Property Name="numberPhone_patient" Type="String" MaxLength="14" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="HospitalRBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="RegistrationPatient" EntityType="Self.RegistrationPatient" />
+  </EntityContainer>
+</Schema>

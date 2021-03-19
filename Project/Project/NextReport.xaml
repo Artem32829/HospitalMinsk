@@ -1,0 +1,17 @@
+﻿<Window x:Class="Project.NextReport"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project"
+        mc:Ignorable="d"
+        Title="NextReport" Height="280.8" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Label FontSize="20" Content="Продление больничного листа" HorizontalAlignment="Left" Margin="261,10,0,0" VerticalAlignment="Top"/>
+        <TextBox FontSize="18" HorizontalAlignment="Left" Height="23" Margin="10,77,0,0" TextWrapping="Wrap" Text="Путь: Выдача больничных листо -> Продлить/закрыть больничный лист." VerticalAlignment="Top" Width="612"/>
+        <TextBlock FontSize="18" HorizontalAlignment="Left" Margin="10,134,0,0" TextWrapping="Wrap" Text="Номер листа: номер ранее выданного больничного листа, если его нет, произойдет ошибка программы." VerticalAlignment="Top"/>
+        <TextBlock FontSize="18" HorizontalAlignment="Left" Margin="10,105,0,0" TextWrapping="Wrap" Text="Дата по: дата продления не должна привышать 14 дней от сегодняшней даты." VerticalAlignment="Top"/>
+        <TextBlock FontSize="18" HorizontalAlignment="Left" Margin="10,187,0,0" TextWrapping="Wrap" Text="Галочка {Закрыть больничный лист}: ВАЖНО заполнить ТОЛЬКО поле НОМЕР ЛИСТА и нажать кнопку ПРИМЕНИТЬ." VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>

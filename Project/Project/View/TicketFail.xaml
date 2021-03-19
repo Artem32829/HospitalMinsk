@@ -1,0 +1,175 @@
+﻿<UserControl x:Class="Project.View.TicketFail"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Project.View"
+             mc:Ignorable="d" Width="553.812" Height="702">
+    <UserControl.Resources>
+        <Style x:Key="TB" TargetType="TextBox">
+            <Setter Property="Background" Value="#0000FF"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="BorderBrush" Value="#1E90FF"/>
+            <Setter Property="Padding" Value="10,0,0,0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Grid x:Name="Root" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" SnapsToDevicePixels="True">
+                            <Border x:Name="Backround" BorderThickness="1" CornerRadius="2" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"/>
+                            <ScrollViewer x:Name="PART_ContentHost" BorderThickness="0" Padding="{TemplateBinding Padding}"
+                                          IsTabStop="False" Background="{x:Null}"
+                                          TextElement.Foreground="{TemplateBinding Foreground}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" Value="Azure"/>
+                            </Trigger>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter Property="BorderBrush" Value="#0000CD"/>
+                                <Setter Property="Background" Value="#00008B"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid Margin="10,-10,-9.8,10.4">
+        <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="696" Margin="3,14,0,-8" VerticalAlignment="Top" Width="530">
+            <Image Source="/Sourse/Obrazets-bolnichnogo_Prodolzhenie-ranee-vydannogo-bolnichnogo2.png" Height="707" Canvas.Top="-6" Width="531" Canvas.Left="-1" />
+            <Label Content="Поликлиника №38" x:Name="nameorgticket" HorizontalAlignment="Left" VerticalAlignment="Top" Width="275" Height="30" FontSize="16" Canvas.Left="173" Canvas.Top="10"/>
+            <Label  x:Name="pollable" HorizontalAlignment="Left" VerticalAlignment="Top" Width="19" Height="28" Canvas.Left="381" Canvas.Top="103"/>
+            <Label   x:Name="fiolable" HorizontalAlignment="Left" VerticalAlignment="Top" Width="438" Height="26" Canvas.Top="136" Canvas.Left="41"/>
+            <Label  x:Name="joblableticket" HorizontalAlignment="Left" VerticalAlignment="Top" Width="275" Height="27" Canvas.Left="41" Canvas.Top="167"/>
+            <Label  x:Name="otherlable" HorizontalAlignment="Left" VerticalAlignment="Top" Width="440" Height="27" Canvas.Left="41" Canvas.Top="281"/>
+            <Label FontSize="10"  x:Name="startlable" HorizontalAlignment="Left" VerticalAlignment="Top" Width="62" Height="54" Canvas.Left="41" Canvas.Top="418"/>
+            <Label FontSize="10"  x:Name="endlable" HorizontalAlignment="Left" VerticalAlignment="Top" Width="193" Height="54" Canvas.Left="103" Canvas.Top="418"/>
+            <Label  FontSize="8"  x:Name="jobdoctorlable" HorizontalAlignment="Left" VerticalAlignment="Top" Width="178" Height="120" Canvas.Left="301" Canvas.Top="418"/>
+            <Label FontSize="14"  x:Name="fiodoctorlable" HorizontalAlignment="Left" VerticalAlignment="Top" Width="286" Height="26" Canvas.Left="114" Canvas.Top="579"/>
+            <Label FontSize="20"  x:Name="codelable" HorizontalAlignment="Left" VerticalAlignment="Top" Width="74" Height="43" Canvas.Left="409" Canvas.Top="247"/>
+            <Label x:Name="number_ticket" Canvas.Left="41" Canvas.Top="85"/>
+        </Canvas>
+
+
+        <TextBlock IsHitTestVisible="False" FontSize="14" Text="ФИО пациента" Margin="-602,37,695,0" VerticalAlignment="Top" Foreground="#A9A9A9">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=fio}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+
+        <Grid HorizontalAlignment="Left" Height="38" Margin="-503,88,0,0" VerticalAlignment="Top" Width="271">
+            <Border Name="butbord"
+        BorderThickness="1" Background="Transparent" RenderTransformOrigin="0.5,0.5" >
+                <Border.Style>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="BorderBrush" Value="Transparent"/>
+                    </Style>
+                </Border.Style>
+                <Button Content="Применить" FontSize="16" Foreground="Black" Click="Use"  Margin="-0.8,-0.8,-0.6,-0.8"  Background="#FFF0F7FF">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="OverridesDefaultStyle" Value="True"/>
+                            <Setter Property="Background" Value="#FFF0F7FF"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border x:Name="border" BorderThickness="0" BorderBrush="Black"
+                                        Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="#0000FF"/>
+                                            </Trigger>
+                                            <EventTrigger RoutedEvent="UIElement.PreviewMouseDown">
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <ThicknessAnimation Storyboard.TargetProperty="Margin"
+                                                                    Duration="0:0:0.100" To="2,2,0,0"/>
+                                                        <ColorAnimation Storyboard.TargetProperty="Background.Color" To="#000080" Duration="0:0:0.002"/>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </EventTrigger>
+                                            <EventTrigger RoutedEvent="UIElement.PreviewMouseUp">
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <ThicknessAnimation Storyboard.TargetProperty="Margin"
+                                                                    Duration="0:0:0.100" To="0"/>
+                                                        <ColorAnimation Storyboard.TargetProperty="Background.Color" To="#FFF0F7FF" Duration="0:0:0.002"/>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </EventTrigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </Border>
+        </Grid>
+        <Grid HorizontalAlignment="Left" Height="38" Margin="-503,131,0,0" VerticalAlignment="Top" Width="271">
+            <Border Name="butbord2"
+        BorderThickness="1" Background="Transparent" RenderTransformOrigin="0.5,0.5" Margin="1,0,0,0" >
+                <Border.Style>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="BorderBrush" Value="Transparent"/>
+                    </Style>
+                </Border.Style>
+                <Button Content="Печать" FontSize="16" Foreground="Black" Click="Canvas_Img"  Margin="-0.8,-0.8,-0.6,-0.8"  Background="#FFF0F7FF">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="OverridesDefaultStyle" Value="True"/>
+                            <Setter Property="Background" Value="#FFF0F7FF"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border x:Name="border" BorderThickness="0" BorderBrush="Black"
+                                        Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="#0000FF"/>
+                                            </Trigger>
+                                            <EventTrigger RoutedEvent="UIElement.PreviewMouseDown">
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <ThicknessAnimation Storyboard.TargetProperty="Margin"
+                                                                    Duration="0:0:0.100" To="2,2,0,0"/>
+                                                        <ColorAnimation Storyboard.TargetProperty="Background.Color" To="#000080" Duration="0:0:0.002"/>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </EventTrigger>
+                                            <EventTrigger RoutedEvent="UIElement.PreviewMouseUp">
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <ThicknessAnimation Storyboard.TargetProperty="Margin"
+                                                                    Duration="0:0:0.100" To="0"/>
+                                                        <ColorAnimation Storyboard.TargetProperty="Background.Color" To="#FFF0F7FF" Duration="0:0:0.002"/>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </EventTrigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </Border>
+        </Grid>
+        <ComboBox IsEditable="True" x:Name="namepatbox" HorizontalAlignment="Left" Margin="-503,22,0,0" VerticalAlignment="Top" Width="271" Height="30"/>
+
+    </Grid>
+</UserControl>

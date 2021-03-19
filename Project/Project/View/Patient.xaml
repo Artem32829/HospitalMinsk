@@ -1,0 +1,149 @@
+﻿<UserControl x:Class="Project.View.Patient"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Project.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="1719.2" Width="2716">
+    <UserControl.Resources>
+        <Style x:Key="TB" TargetType="TextBox">
+            <Setter Property="Background" Value="#0000FF"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="BorderBrush" Value="#1E90FF"/>
+            <Setter Property="Padding" Value="10,0,0,0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Grid x:Name="Root" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" SnapsToDevicePixels="True">
+                            <Border x:Name="Backround" BorderThickness="1" CornerRadius="2" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"/>
+                            <ScrollViewer x:Name="PART_ContentHost" BorderThickness="0" Padding="{TemplateBinding Padding}"
+                                          IsTabStop="False" Background="{x:Null}"
+                                          TextElement.Foreground="{TemplateBinding Foreground}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" Value="Azure"/>
+                            </Trigger>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter Property="BorderBrush" Value="#0000CD"/>
+                                <Setter Property="Background" Value="#00008B"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid Margin="0,120,0,-119.8">
+        <DataGrid Background="White" Name ="datagrid1" Margin="0,0,2031,144.2"/>
+        <Label FontSize="25" Foreground="Black" Content="Поиск" HorizontalAlignment="Left" Margin="931,10,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="sortfio" Style="{StaticResource TB}" Margin="726,86,1491,0" VerticalAlignment="Top" Background="#FFF0F7FF" BorderBrush="Black" Foreground="Black" SelectionBrush="#FFADADAD"/>
+        <TextBlock IsHitTestVisible="False" FontSize="14" Text="По ФИО" Margin="737,93,1520,0" VerticalAlignment="Top" Foreground="Black">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=sortfio}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+        <TextBox x:Name="sortadress" Style="{StaticResource TB}" Margin="726,137,1491,0" VerticalAlignment="Top" Background="#FFF0F7FF" BorderBrush="Black" SelectionBrush="#FFB9B9B9"/>
+        <TextBlock IsHitTestVisible="False" FontSize="14" Text="По адресу" Margin="737,145,1491,0" VerticalAlignment="Top" Foreground="Black">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=sortadress}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+        <TextBox x:Name="sortbirthday" Style="{StaticResource TB}" Margin="726,186,1491,0" VerticalAlignment="Top" Background="#FFF0F7FF" SelectionBrush="#FFABADB0" Foreground="Black" BorderBrush="Black"/>
+        <TextBlock IsHitTestVisible="False" FontSize="14" Text="По дате рождения" Margin="737,193,1491,0" VerticalAlignment="Top" Foreground="Black">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=sortbirthday}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+        <TextBox x:Name="sortphone" Style="{StaticResource TB}" Margin="726,234,1491,0" VerticalAlignment="Top" Foreground="Black" BorderBrush="Black" Background="#FFF0F7FF" SelectionBrush="#FFA8A8A8"/>
+        <TextBlock IsHitTestVisible="False" FontSize="14" Text="По номеру телефона" Margin="737,242,1491,0" VerticalAlignment="Top" Foreground="Black">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=sortphone}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+        <Grid HorizontalAlignment="Left" Height="36" Margin="726,311,0,0" VerticalAlignment="Top" Width="499">
+            <Border Name="buutBorder"
+        BorderThickness="1" Background="Transparent" >
+                <Border.Style>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="BorderBrush" Value="Transparent"/>
+                    </Style>
+                </Border.Style>
+                <Button Content="Поиск" FontSize="16" Foreground="Black"  Margin="-0.8,-0.8,-0.6,-0.8" Click="Button_Click" Background="#FFF0F7FF">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="OverridesDefaultStyle" Value="True"/>
+                            <Setter Property="Background" Value="#FFF0F7FF"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border x:Name="border" BorderThickness="0" BorderBrush="Black"
+                                        Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="#0000FF"/>
+                                            </Trigger>
+                                            <EventTrigger RoutedEvent="UIElement.PreviewMouseDown">
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <ThicknessAnimation Storyboard.TargetProperty="Margin"
+                                                                    Duration="0:0:0.100" To="2,2,0,0"/>
+                                                        <ColorAnimation Storyboard.TargetProperty="Background.Color" To="#000080" Duration="0:0:0.002"/>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </EventTrigger>
+                                            <EventTrigger RoutedEvent="UIElement.PreviewMouseUp">
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <ThicknessAnimation Storyboard.TargetProperty="Margin"
+                                                                    Duration="0:0:0.100" To="0"/>
+                                                        <ColorAnimation Storyboard.TargetProperty="Background.Color" To="#FFF0F7FF" Duration="0:0:0.002"/>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </EventTrigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </Border>
+        </Grid>
+
+    </Grid>
+</UserControl>
